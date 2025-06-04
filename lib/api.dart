@@ -1,10 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:not_youtube/model/yt_video.dart';
 
-const YOUTUBE_API_KEY = "AIzaSyAGT71wl2WJTFe7dnu7ovk5B6U1X1_FKOU";
-const GAULES_CHANNEL = "UC5ZTRH1zclthyc6b_D3m2Pw";
 const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/";
 
 class Api {
