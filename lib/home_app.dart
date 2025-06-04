@@ -3,6 +3,7 @@ import 'package:not_youtube/screens/home.dart';
 import 'package:not_youtube/screens/library.dart';
 import 'package:not_youtube/screens/subscriptions.dart';
 import 'package:not_youtube/screens/trending.dart';
+import 'package:not_youtube/youtube_search_delegate.dart';
 
 class HomeApp extends StatefulWidget {
   const HomeApp({super.key});
@@ -37,24 +38,27 @@ class _HomeAppState extends State<HomeApp> {
           height: 22,
         ),
         actions: [
+          // IconButton(
+          //     onPressed: (){
+          //       print("Action: VideoCam");
+          //     },
+          //     icon: Icon(Icons.videocam)
+          // ),
           IconButton(
-              onPressed: (){
-                print("Action: VideoCam");
-              },
-              icon: Icon(Icons.videocam)
-          ),
-          IconButton(
-              onPressed: (){
-                print("Action: Search");
+              onPressed: () async {
+                String? res = await showSearch(
+                    context: context,
+                    delegate: YoutubeSearchDelegate()
+                );
               },
               icon: Icon(Icons.search)
           ),
-          IconButton(
-              onPressed: (){
-                print("Action: Account");
-              },
-              icon: Icon(Icons.account_circle)
-          )
+          // IconButton(
+          //     onPressed: (){
+          //       print("Action: Account");
+          //     },
+          //     icon: Icon(Icons.account_circle)
+          // )
         ],
       ),
       backgroundColor: Colors.white,

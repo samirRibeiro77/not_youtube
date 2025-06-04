@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
                   ),
                   itemCount: snapshot.data!.length
               );
-              break;
             default:
               return Center(
                 child: CircularProgressIndicator(),
