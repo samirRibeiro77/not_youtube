@@ -1,6 +1,7 @@
-# not_youtube
+# NOT Youtube
 
-A new Flutter project.
+Project to study Flutter creating an application that **looks like** the old YouTube App.
+This app really uses the Youtube API to search the videos on the web.
 
 ## Getting Started
 
