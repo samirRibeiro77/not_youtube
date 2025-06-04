@@ -14,12 +14,13 @@ class HomeApp extends StatefulWidget {
 
 class _HomeAppState extends State<HomeApp> {
 
+  var _query = "";
   var _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     var screens = [
-      Home(),
+      Home(query: _query),
       Trending(),
       Subscriptions(),
       Library(),
@@ -46,10 +47,14 @@ class _HomeAppState extends State<HomeApp> {
           // ),
           IconButton(
               onPressed: () async {
-                String? res = await showSearch(
+                String? query = await showSearch(
                     context: context,
                     delegate: YoutubeSearchDelegate()
                 );
+
+                setState(() {
+                  _query = query ?? "";
+                });
               },
               icon: Icon(Icons.search)
           ),

@@ -3,7 +3,9 @@ import 'package:not_youtube/api.dart';
 import 'package:not_youtube/model/yt_video.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.query});
+
+  final String query;
 
   @override
   State<Home> createState() => _HomeState();
@@ -14,7 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<YoutubeVideo>>(
-        future: Api().search(),
+        future: Api().search(query: widget.query),
         builder: (context, snapshot){
           switch(snapshot.connectionState) {
             case ConnectionState.active:

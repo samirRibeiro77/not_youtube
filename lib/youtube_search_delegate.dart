@@ -31,7 +31,28 @@ class YoutubeSearchDelegate extends SearchDelegate<String>{
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    print("Suggestion with $query");
-    return Container();
+    var suggestionList = ["Type to search"];
+    if(query.isNotEmpty) {
+      suggestionList = [
+        "IEM", "Blast", "Furia", "Kings League", "G3X"
+      ].where(
+              (text) => text.toLowerCase().contains(query.toLowerCase())
+      ).toList();
+    }
+
+    return Container(
+      color: Colors.white,
+      child: ListView.builder(
+          itemCount: suggestionList.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              onTap: () {
+                close(context, suggestionList[index]);
+              },
+              title: Text(suggestionList[index]),
+            );
+          }
+      ),
+    );
   }
 }
