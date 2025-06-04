@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:not_youtube/api_key.dart';
 import 'dart:convert';
 import 'package:not_youtube/model/yt_video.dart';
 
@@ -7,14 +8,15 @@ const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/";
 class Api {
 
   Future<List<YoutubeVideo>> search({String query = ""}) async {
+    var channel = ApiKey.ytChannel != "" ? "&channelId=${ApiKey.ytChannel}" : "";
     var url = "${YOUTUBE_URL}search"
         "?part=snippet"
-        "&channelId=$GAULES_CHANNEL"
+        "$channel"
         "&maxResults=20"
         "&order=date"
         "&type=video"
         "&q=$query"
-        "&key=$YOUTUBE_API_KEY";
+        "&key=${ApiKey.youtube}";
 
     var response = await http.get(
       Uri.parse(url),
