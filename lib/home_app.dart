@@ -27,6 +27,7 @@ class _HomeAppState extends State<HomeApp> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         iconTheme: IconThemeData(
           color: Colors.grey,
         ),
@@ -56,9 +57,14 @@ class _HomeAppState extends State<HomeApp> {
           )
         ],
       ),
-      body: screens[_currentIndex],
+      backgroundColor: Colors.white,
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: screens[_currentIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
           fixedColor: Colors.red,
           currentIndex: _currentIndex,
           onTap: (index) {

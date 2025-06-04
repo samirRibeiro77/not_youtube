@@ -9,7 +9,7 @@ const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/";
 
 class Api {
 
-  search({String query = ""}) async {
+  Future<List<YoutubeVideo>> search({String query = ""}) async {
     var url = "${YOUTUBE_URL}search"
         "?part=snippet"
         "&channelId=$GAULES_CHANNEL"
@@ -31,9 +31,12 @@ class Api {
             return YoutubeVideo.fromJson(videoJson);
           }
       ).toList();
+
+      return videos;
     }
     else {
       print("Error}");
+      return [];
     }
   }
 
